@@ -1,0 +1,34 @@
+<!-- <p>my-first-component works!</p>
+{{count}}
+<img [src]="image" alt=""> -->
+<div class="container ">
+  <div class="row p-1 ">
+    <div *ngFor="let post of posts" class="col-4 my-3">
+      <div  class="card" style="width: 25rem;">
+        <img src="{{post.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">date : {{post.createdAt}}</p>
+          <h5 class="card-title">title : {{post.title | titlecase}}</h5>
+          <!-- <p class="card-text">content : {{post.content}}</p> -->
+
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> {{post.creator['name']}} <span class="dot {{post.creator.isOnline ? 'green' : 'red'}}"></span></li>
+          <li class="list-group-item">likes: {{post.likes}}
+           <span class="mx-4"> followers : {{post.creator['followers']}} </span>
+          </li>
+        </ul>
+        <div class="card-body">
+          <!-- <a href="#" class="card-link btn btn-success " >  {{post.creator.isOnline ? 'online' : 'offline'}}</a> -->
+          <button  href="#" (click)="onchangeFollow(post.id)"  class="card-link btn btn-primary" >{{post.creator['isFollowing'] ? 'unfollow' : 'follow'}}</button>
+          <ng-template #notfollow>
+
+            <!-- <a href="#"  class="card-link btn btn-success">follow</a> -->
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
